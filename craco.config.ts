@@ -1,18 +1,17 @@
-import path from "path";
-
+const path = require('path')
 
 module.exports = {
   devServer: {
     proxy: {
-      "/api": {
-        target: "http://192.168.121.66:8090/",
-        pathRewrite: { "^/api": "" },
-      },
-    },
+      '/api': {
+        target: 'http://192.168.121.66:8090/',
+        pathRewrite: { '^/api': '' }
+      }
+    }
   },
   webpack: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, 'src')
     },
     module: {
       rules: [
@@ -20,21 +19,21 @@ module.exports = {
           test: /\.svg$/,
           use: [
             {
-              loader: "@svgr/webpack",
+              loader: '@svgr/webpack',
               options: {
-                icon: true,
-              },
+                icon: true
+              }
             },
             {
-              loader: "file-loader",
+              loader: 'file-loader',
               options: {
-                name: "[name].[hash].[ext]",
-                outputPath: "assets/svg",
-              },
-            },
-          ],
-        },
-      ],
+                name: '[name].[hash].[ext]',
+                outputPath: 'assets/svg'
+              }
+            }
+          ]
+        }
+      ]
     },
     plugins: {
       add: [
@@ -42,7 +41,7 @@ module.exports = {
       ],
       remove: [
         /* ... */
-      ],
-    },
-  },
-};
+      ]
+    }
+  }
+}
